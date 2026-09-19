@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+.cache/
+*.tsbuildinfo
+*.local
+.turbo/
+
+# Vite
+.vite/
+vite.config.*.timestamp-*
+
+# Local env files may hold the DATABASE_URL and proxy targets.
+# Keep .env.example tracked.
+.env*
+!.env.example
+
+# Logs
+logs/
+*.log
+*-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Tooling scratch state
+.claude-replay.*
+.tmp-*
+.vercel
+.firebase/
+
+
+# Platform-managed agentplat state, not project source. In the
+# client-initiated single-repo workspace layout (make's `Path: "."` spec) the
+# repo root IS the workspace root, so these land inside this repo rather than
+# beside it. The leading **/ is required: a pattern with an internal slash is
+# otherwise anchored to this file's directory, and would stop matching once the
+# app lives under apps/.
+**/.figma/design-context/
+.plugins/
+.opencode-skills/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python bytecode (apps/admin/server)
+__pycache__/
+*.pyc

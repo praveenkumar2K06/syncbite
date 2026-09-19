@@ -1,0 +1,20 @@
+{
+  "name": "SyncBite",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "typecheck": "turbo run typecheck",
+    "deploy": "turbo run build && firebase deploy --only hosting",
+    "deploy:student": "turbo run build --filter=@syncbite/student && firebase deploy --only hosting:student",
+    "deploy:restaurant": "turbo run build --filter=@syncbite/restaurant && firebase deploy --only hosting:restaurant",
+    "deploy:admin": "turbo run build --filter=@syncbite/admin && firebase deploy --only hosting:admin"
+  },
+  "packageManager": "pnpm@12.9.1",
+  "devDependencies": {
+    "turbo": "^2.11.7"
+  }
+}
