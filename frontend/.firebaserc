@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "syncbite-lmx"
+  },
+  "targets": {
+    "syncbite-lmx": {
+      "hosting": {
+        "student": [
+          "syncbite-lmx"
+        ],
+        "admin": [
+          "syncbite-admin"
+        ],
+        "restaurant": [
+          "syncbite-restaurant"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
