@@ -42,6 +42,7 @@ lerna-debug.log*
 # beside it. The leading **/ is required: a pattern with an internal slash is
 # otherwise anchored to this file's directory, and would stop matching once the
 # app lives under apps/.
+.figma/
 **/.figma/design-context/
 .plugins/
 .opencode-skills/
