@@ -1,5 +1,5 @@
 import asyncio
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import structlog
 from sqlalchemy import select
@@ -36,7 +36,7 @@ async def process_expired_game_tickets_once() -> int:
     pushes their linked SCHEDULED food order (DINE_IN or TAKEAWAY) to the restaurant.
     """
     pushed_count = 0
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     async with AsyncSessionLocal() as session:
         stmt = select(GameTicket.id).where(
             GameTicket.status == "ACTIVE",

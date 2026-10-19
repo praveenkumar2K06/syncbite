@@ -1,7 +1,7 @@
 import secrets
 import uuid
 from collections.abc import Sequence
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import structlog
@@ -157,8 +157,7 @@ class GameService:
             if field == "category" and isinstance(value, str):
                 value = value.upper()
             setattr(platform, field, value)
-        if platform.available_units > platform.total_units:
-            platform.available_units = platform.total_units
+        platform.available_units = min(platform.available_units, platform.total_units)
         await self.session.commit()
         await self.session.refresh(platform)
         return platform
@@ -197,10 +196,10 @@ class GameService:
                 error_code="GAME_PLATFORM_FULL",
             )
 
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         start_time = req.start_time if req.start_time else now
         if start_time.tzinfo is None:
-            start_time = start_time.replace(tzinfo=timezone.utc)
+            start_time = start_time.replace(tzinfo=UTC)
         end_time = start_time + timedelta(hours=req.duration_hours)
 
         unit_index = max(1, platform.total_units - platform.available_units + 1)
@@ -423,7 +422,7 @@ class GameService:
                 error_code="GAME_TICKET_CANCELLED",
             )
 
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
 
         # Free up the gaming station if ticket was ACTIVE
         if ticket.status == "ACTIVE" and ticket.platform:

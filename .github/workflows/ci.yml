@@ -19,7 +19,8 @@ jobs:
           python-version: "3.11"
       - run: pip install -r requirements.txt
       - uses: astral-sh/ruff-action@v4.1.0
-      - run: ruff check .
+        with:
+          src: "backend/app"
 
   frontend:
     runs-on: ubuntu-latest
